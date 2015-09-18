@@ -1,15 +1,21 @@
+
 package ui;
 
-import ui.widgets.PoolButton;
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import ui.widgets.PoolButton;
 
-public class TestScreen extends Application{
+public class PageRevisionsScreen {
 	
+	
+	//i will need title, if was redirected
+	//revisions 
+	
+	
+	//wikiInfoPackage
 	private TextField inputField =  new TextField();
 	
 	public static void Main(String[] args){
@@ -37,6 +43,8 @@ public class TestScreen extends Application{
 
         return root;
 	}
+	
+	
 	
 	
 	
