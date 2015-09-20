@@ -25,7 +25,7 @@ public class PoolButton extends Button {
 			@Override
 			public void handle(ActionEvent event) {
 				Parent root;
-		        root = FXMLLoader.load(getClass().getClassLoader().getResource("path/to/other/view.fxml"), resources);
+		        //root = FXMLLoader.load(getClass().getClassLoader().getResource("path/to/other/view.fxml"), resources);
 		            
 				//TODO:
 				// lock current screen || close it
@@ -33,9 +33,10 @@ public class PoolButton extends Button {
 				
 		        //Stage stage = new Stage(); stage.setScene(new Scene(new Group(new Text(10,10, "my second window"))));
 		        Stage stage= new Stage();
-		        PageRevisionsScreen.launch(PageRevisionsScreen.class, null);
+		        PageRevisionsScreen.launch(PageRevisionsScreen.class, "");
 		        
 		            		
+		        
 		            		//
 	            //Stage stage = new Stage();
 	            //stage.setTitle("My New Stage Title");
