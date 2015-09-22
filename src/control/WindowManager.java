@@ -1,14 +1,32 @@
 package control;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import ui.SearchScreen;
 import ui.TestScreen;
 
-public class WindowManager {
+public class WindowManager extends Application{
 
 	//has information about all windows.
-	
 	//will be static. When one window opens, it closes another.
 	
 	private static WindowManager instance;
+	
+	//this method is required for javafx to run
+	public static void Main(String[] args){
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {        
+        SearchScreen screen = new SearchScreen();
+		screen.show();
+	}
+	
+	
+	
+	
 	
 	private WindowManager() {
 		//instance = new WindowManager();

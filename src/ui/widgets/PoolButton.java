@@ -3,7 +3,8 @@ package ui.widgets;
 
 import java.io.IOException;
 
-import ui.PageRevisionsScreen;
+import ui.RevisionsScreen;
+import ui.SearchScreen;
 import ui.TestScreen;
 import control.WindowManager;
 import javafx.event.ActionEvent;
@@ -13,7 +14,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class PoolButton extends Button {  	
@@ -24,33 +27,42 @@ public class PoolButton extends Button {
     		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Parent root;
-		        //root = FXMLLoader.load(getClass().getClassLoader().getResource("path/to/other/view.fxml"), resources);
-		            
-				//TODO:
-				// lock current screen || close it
-				//when next window opens unlock it
 				
-		        //Stage stage = new Stage(); stage.setScene(new Scene(new Group(new Text(10,10, "my second window"))));
-		        Stage stage= new Stage();
-		        PageRevisionsScreen.launch(PageRevisionsScreen.class, "");
-		        
-		            		
-		        
-		            		//
-	            //Stage stage = new Stage();
-	            //stage.setTitle("My New Stage Title");
-	            //stage.setScene(new Scene(root, 450, 450));
-	            //stage.show();
+				SearchScreen searchScreen1 = new SearchScreen();
+				searchScreen1.show();
+				
+				//openWindow();
 
-	            //hide this current window (if this is whant you want
-	            ((Node)(event.getSource())).getScene().getWindow().hide();;
+				hideCurrentWindow(event);
+	            //hide this current window
+	            
 										
 			}
 		});
 	}
    	
+	
 
+	private void hideCurrentWindow(ActionEvent clickEvent){
+		((Node)(clickEvent.getSource())).getScene().getWindow().hide();;
+	}
+	
+	
+	private void openWindow(){
+		Label secondLabel = new Label("Hello");
+        
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(secondLabel);
+         
+        Scene secondScene = new Scene(secondaryLayout, 200, 100);
+
+        Stage secondStage = new Stage();
+        secondStage.setTitle("Second Stage");
+        secondStage.setScene(secondScene);
+
+        secondStage.show();
+	}
+	
 	private void poolWikipediaPage(String pageTitle){
 		//Chama api pra receber resposta, quando receber resposta manda windowmanager abrir outra janela
 		WindowManager windowManager = WindowManager.getInstance();
