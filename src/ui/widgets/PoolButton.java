@@ -3,8 +3,8 @@ package ui.widgets;
 
 import java.io.IOException;
 
-import ui.RevisionsScreen;
-import ui.SearchScreen;
+import ui.RevisionsWindow;
+import ui.SearchWindow;
 import ui.TestScreen;
 import control.WindowManager;
 import javafx.event.ActionEvent;
@@ -28,7 +28,7 @@ public class PoolButton extends Button {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				SearchScreen searchScreen1 = new SearchScreen();
+				RevisionsWindow searchScreen1 = new RevisionsWindow();
 				searchScreen1.show();
 				
 				//openWindow();
@@ -66,7 +66,7 @@ public class PoolButton extends Button {
 	private void poolWikipediaPage(String pageTitle){
 		//Chama api pra receber resposta, quando receber resposta manda windowmanager abrir outra janela
 		WindowManager windowManager = WindowManager.getInstance();
-		//windowManager.openPageChangesScreen(pageTitle);
+		//windowManager.openPageRevisionsWindow(pageTitle);
 		
 	}
 	

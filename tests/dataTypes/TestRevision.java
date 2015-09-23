@@ -39,11 +39,13 @@ public class TestRevision {
 	public void testGetFormattedTime(){
 		LocalTime time = LocalTime.of(EXPECTED_HOURS, EXPECTED_MINUTES, EXPECTED_SECONDS);
 		Revision revision = new Revision("",null,time,"");
+		
+		Assert.assertEquals(EXPECTED_FORMATTED_TIME, revision.getFormattedTime());
 	}
 	
 	@Test
 	public void testGetters(){
-		Revision first = new Revision(EXPECTED_AUTHOR,null,EXPECTED_COMMENT);	
+		Revision first = new Revision(EXPECTED_AUTHOR,null,null,EXPECTED_COMMENT);	
 		assertExpectedAuthorAndComment(first);
 	}
 	

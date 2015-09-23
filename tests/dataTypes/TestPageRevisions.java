@@ -1,31 +1,30 @@
 package dataTypes;
 
+
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TestPageRevisions {
 
 	
 	@Test
-	public void testPopRevision(){
+	public void testGetRevisionFIFO(){
 		PageRevisions revisions = new PageRevisions();
-		Revision testRevision = new Revision();
+		Revision failRevision = new Revision("",null,null,"");
+		Revision expectedRevision = new Revision("bruno",null,null,"");
 		
+		revisions.addRevision(failRevision);
+		revisions.addRevision(expectedRevision);
+		revisions.popRevisionFIFO();
 		
-		Revision lastRevision = revisions.getRevision();
-		
-		
-		assertEqualRevision(lastRevision, testRevision){
-			
-		}
+		assertEqualRevision(expectedRevision, revisions.popRevisionFIFO());
 	}
 	
-	private void assertEqualRevision(Revision one, Revision second){
-		
+	private void assertEqualRevision(Revision expected, Revision tested){
+		Assert.assertEquals(expected.getAuthor(), tested.getAuthor());
 	}
 	
 	
-	@Test
-	public void 
 	
 	
 }

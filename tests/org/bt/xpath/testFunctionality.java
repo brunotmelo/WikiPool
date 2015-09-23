@@ -16,6 +16,7 @@ import java.io.InputStream;
 
 
 
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -43,16 +44,20 @@ public class testFunctionality {
 	
 	@Test
 	public void testGetTitle() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
-		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		Document document = builder.parse(new File("tests/org/bt/xpath/obama-wikipedia-response.xml"));
+		InputStream sampleFileInputStream = Thread.currentThread().getContextClassLoader()
+				.getResourceAsStream("obama-wikipedia-response.xml");
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		Document document =  documentBuilder.parse(sampleFileInputStream);
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		String expression = "/api/query/pages/page/@title";
 		Node widgetNode = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
 		
-		String articleTitle = widgetNode.toString();
+		String articleTitle = widgetNode.getNodeValue();
 		System.out.println(articleTitle);
-		assertTrue(articleTitle.equals("title=\"Barack Obama\""));
+
+		assertTrue(articleTitle.equals("Barack Obama"));
 	}
 	
 	

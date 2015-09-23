@@ -3,7 +3,7 @@ package control;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.SearchScreen;
+import ui.SearchWindow;
 import ui.TestScreen;
 
 public class WindowManager extends Application{
@@ -20,7 +20,7 @@ public class WindowManager extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {        
-        SearchScreen screen = new SearchScreen();
+        SearchWindow screen = new SearchWindow();
 		screen.show();
 	}
 	
