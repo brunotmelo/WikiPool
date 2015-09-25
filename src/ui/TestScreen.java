@@ -18,8 +18,7 @@ public class TestScreen extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {        
-        configure(primaryStage);
-        
+        configure(primaryStage);   
 	}
 
 	private void configure(Stage stage) {

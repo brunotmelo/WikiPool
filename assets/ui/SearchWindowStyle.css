@@ -1,0 +1,15 @@
+.scene{
+	-fx-background-color: white;
+}
+
+#vbox{
+	-fx-spacing:10pt;
+	-fx-padding: 15;
+	-fx-alignment: center;
+}
+
+#poolbutton{
+	-fx-alignment: bottom-right ;
+}
+
+

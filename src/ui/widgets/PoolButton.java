@@ -1,17 +1,11 @@
 package ui.widgets;
 
 
-import java.io.IOException;
-
 import ui.RevisionsWindow;
-import ui.SearchWindow;
-import ui.TestScreen;
 import control.WindowManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,25 +17,21 @@ public class PoolButton extends Button {
 	
 	
 	public PoolButton(TextField inputField) {
-		super("Pool");
+		super("Pool page revisions");
     		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) {	
 				
 				RevisionsWindow searchScreen1 = new RevisionsWindow();
 				searchScreen1.show();
 				
 				//openWindow();
 
-				hideCurrentWindow(event);
-	            //hide this current window
-	            
-										
+				hideCurrentWindow(event);				
 			}
 		});
 	}
    	
-	
 
 	private void hideCurrentWindow(ActionEvent clickEvent){
 		((Node)(clickEvent.getSource())).getScene().getWindow().hide();;
@@ -49,7 +39,7 @@ public class PoolButton extends Button {
 	
 	
 	private void openWindow(){
-		Label secondLabel = new Label("Hello");
+		Label secondLabel = new Label("Obama");
         
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(secondLabel);
@@ -69,5 +59,6 @@ public class PoolButton extends Button {
 		//windowManager.openPageRevisionsWindow(pageTitle);
 		
 	}
+	
 	
 }

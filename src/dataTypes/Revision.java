@@ -3,8 +3,11 @@ package dataTypes;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.w3c.dom.Node;
+
 import dataTypes.util.DateFormatter;
 import dataTypes.util.TimeFormatter;
+import parsers.RevisionNodeParser;
 
 public class Revision {
 
@@ -18,6 +21,12 @@ public class Revision {
 		this.changeDate = changeDate;
 		this.changeTime = time;
 		this.comment = comment;
+	}
+	
+	public Revision(Node revision){
+		RevisionNodeParser parser = new RevisionNodeParser(revision);
+		this.author = parser.parseAuthor();
+		this.changeDate = parser.parseDate();
 	}
 	
 	//constructor that gets needed xml automatically from document

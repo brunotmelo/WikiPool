@@ -9,7 +9,7 @@ public class TestPageRevisions {
 	
 	@Test
 	public void testGetRevisionFIFO(){
-		PageRevisions revisions = new PageRevisions();
+		Revisions revisions = new Revisions();
 		Revision failRevision = new Revision("",null,null,"");
 		Revision expectedRevision = new Revision("bruno",null,null,"");
 		
