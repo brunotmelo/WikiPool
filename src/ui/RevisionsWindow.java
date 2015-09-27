@@ -2,8 +2,9 @@
 package ui;
 
 import ui.widgets.BarChartBuilder;
-import ui.widgets.RevisionView;
-import dataTypes.Revisions;
+import ui.widgets.RevisionCell;
+import dataTypes.PageRevisions;
+import dataTypes.Revision;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -40,98 +41,69 @@ public class RevisionsWindow {
 	private VBox layout;
 	private Separator separator = new Separator();
 	private HBox content;
-	private Text redirected;
 
 	//private Text 
 	
-	private String searchText;
+	private String redirectedFrom;
 	private String titleText;
-	private Revisions revisions;
+	private PageRevisions revisions;
 	
-	ListView<String> list;
+	ListView<Revision> list;
 	
 	private VBox chartBox;
 	private Pane whitespace;
 	private BarChart<String,Number> bc;
 	
-	public RevisionsWindow(Revisions revisions){
-		populateScene();
+	public RevisionsWindow(PageRevisions revisions){
+		this.revisions = revisions;
+		redirectedFrom = revisions.getRedirectedFrom();
+		titleText = revisions.getPageTitle();
+		buildScene();
 	}
 	
 	//this constructor is only for testing purposes
 	public RevisionsWindow(){
-		searchText = "obama";
-		redirected = new Text(" - redirected from: "+ searchText);
-		redirected.setId("");
+		redirectedFrom = "obama";
 		titleText = "Barack Obama";
-		populateScene();
+		buildScene();
 	}
 	
-	private void populateScene(){
-		Text secondLabel = new Text(titleText + ": Revisions History");
-		secondLabel.setId("title");
-		
-		
+	private void buildScene(){
 	    layout = new VBox(8);
 	    layout.setId("vboxe");
-	    layout.getChildren().add(secondLabel);
-	    layout.getChildren().add(separator);
-	    
-	    content = new HBox(10);
-	    populateList();
-	    buildChart();
-	    HBox.setHgrow(list, Priority.ALWAYS);
-	    //VBox.setVgrow(list, Priority.ALWAYS);
-	    list.setMinHeight(1024);
-	    content.getChildren().add(chartBox);
-	    //layout.getChildren().add();
-	    
-	    
-	    layout.getChildren().add(content);
-	     
+		
+		addTitleBar();
+		addContentPane();
+
 	    revisionsScene = new Scene(layout, 1024, 768);
-	    revisionsScene.getStylesheets().add("ui/RevisionsWindowStyle.css");
-	    
-	    
-	       
+	    revisionsScene.getStylesheets().add("ui/RevisionsWindowStyle.css");       
 
 	}
 	
-	
-	private void createRevisionLayout(){
-		
+	private void addTitleBar(){
+		Text title = new Text(titleText + ": Revisions History");
+		title.setId("title");
+	    layout.getChildren().add(title);
+	    layout.getChildren().add(separator);
 	}
 	
-	private void buildChart(){
-		BarChartBuilder builder = new BarChartBuilder();
-		builder.build();
-		bc = builder.getChart();
-		
-		chartBox = new VBox();
-		whitespace = new Pane();
-		chartBox.getChildren().add(bc);
-		chartBox.getChildren().add(whitespace);
-		VBox.setVgrow(whitespace, Priority.ALWAYS);
-		
-	}
-	
-	
-	public void show(){
-		Stage mainStage = new Stage();
-	    mainStage.setTitle("WikiPool - "+ titleText);
-	    mainStage.setScene(revisionsScene);
-	    
-	    mainStage.show();
+	private void addContentPane(){
+	    content = new HBox(10);
+	    populateList();
+	    buildChart();
+	    setContentProprieties();
+	    layout.getChildren().add(content);
 	}
 	
 	private void populateList(){
-        ObservableList<String> data = FXCollections.observableArrayList(
-                "Item 1", "Item 2", "Item 3", "Item 4");
+        /*ObservableList<String> data = FXCollections.observableArrayList(
+                "Item 1", "Item 2", "Item 3", "Item 4");*/
+		ObservableList<Revision> data = FXCollections.observableArrayList(revisions.getAllRevisions());
         list = new ListView<>(data);
-        list.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+        list.setCellFactory(new Callback<ListView<Revision>, ListCell<Revision>>() {
             @Override
-            public ListCell<String> call(ListView<String> param) {
-                return new RevisionView();
+            public ListCell<Revision> call(ListView<Revision> param) {
+                return new RevisionCell();
             }
         });
         
@@ -150,6 +122,41 @@ public class RevisionsWindow {
         
         content.getChildren().add(list);
 		
+	}
+	
+	private void buildChart(){
+		BarChartBuilder builder = new BarChartBuilder(revisions.getAuthors());
+		bc = builder.getChart();
+		
+		chartBox = new VBox();
+		whitespace = new Pane();
+		chartBox.getChildren().add(bc);
+		chartBox.getChildren().add(whitespace);
+		//VBox.setVgrow(whitespace, Priority.ALWAYS);
+	}
+	
+	private void setContentProprieties(){
+	    HBox.setHgrow(list, Priority.ALWAYS);
+	    //VBox.setVgrow(list, Priority.ALWAYS);
+	    list.setMinHeight(680);
+	    list.setMinWidth(600);
+	    content.getChildren().add(chartBox);
+	    //layout.getChildren().add();
+	}
+	
+	public void show(){
+		Stage mainStage = new Stage();
+		if(redirectedFrom!=null){
+			mainStage.setTitle("WikiPool - Redirected from " +redirectedFrom );
+		}else{
+			System.out.println(redirectedFrom);
+			mainStage.setTitle("WikiPool - "+ titleText);
+		}
+		
+	    
+	    mainStage.setScene(revisionsScene);
+	    
+	    mainStage.show();
 	}
 
 	

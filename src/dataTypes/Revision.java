@@ -16,17 +16,12 @@ public class Revision {
 	private LocalTime changeTime;
 	private String comment;
 	
-	public Revision(String author, LocalDate changeDate, LocalTime time, String comment){
-		this.author = author;
-		this.changeDate = changeDate;
-		this.changeTime = time;
-		this.comment = comment;
-	}
-	
 	public Revision(Node revision){
 		RevisionNodeParser parser = new RevisionNodeParser(revision);
 		this.author = parser.parseAuthor();
 		this.changeDate = parser.parseDate();
+		this.changeTime = parser.parseTime();
+		this.comment = parser.parseComment();
 	}
 	
 	//constructor that gets needed xml automatically from document

@@ -12,6 +12,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import exceptions.WikipediaConnectionException;
+import parsers.WikipediaUrlCreator;
+
 public class WikipediaConnection {
 
 	//url string example
@@ -19,24 +22,47 @@ public class WikipediaConnection {
 
 	private String urlString;
 	private URLConnection connection;
+	private Document document;
 		
-	public WikipediaConnection(String urlString) throws IOException{
-		this.urlString = urlString;
+	public WikipediaConnection(String searchTerm){
+		try{
+			connect(searchTerm);
+		}catch(Exception e){
+			throw new WikipediaConnectionException();
+		}
+	}
+	
+	private void connect(String searchTerm) throws IOException{
+		this.urlString = getUrlForTerm(searchTerm);
 		URL url = new URL(urlString);
 		URLConnection connection = url.openConnection();
 		connection.setRequestProperty("User-Agent",
-				"CS222TwoWeekProject/0.1 (http://www.cs.bsu.edu/homepages/pvg/courses/cs222Fa15/#!/two-week-project; btavaresdeme@bsu.edu)");
+				"CS222TwoWeekProject/0.1 (http://www.cs.bsu.edu/homepages/pvg/courses/cs222Fa15/#!/"
+				+ "two-week-project; btavaresdeme@bsu.edu)");
 		connection.connect();
 		this.connection = connection;
-		
 	}
 
-	public Document getXmlDocument() throws ParserConfigurationException, SAXException, IOException{
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		return documentBuilder.parse(connection.getInputStream());
+	public Document getXmlDocument(){
+		try{
+			buildXmlDocument();
+			return document;
+		}catch(Exception e){
+			throw new WikipediaConnectionException();
+		}
 	}
 	
+	private void buildXmlDocument() throws SAXException, IOException, ParserConfigurationException{
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		document =  documentBuilder.parse(connection.getInputStream());
+	}
+	
+	private String getUrlForTerm(String term){
+		WikipediaUrlCreator creator = new WikipediaUrlCreator();
+		return creator.createUrlFrom(term);
+		
+	}
 	
 	
 	

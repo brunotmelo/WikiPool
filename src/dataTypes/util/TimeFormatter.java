@@ -1,6 +1,7 @@
 package dataTypes.util;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class TimeFormatter {
 	LocalTime time;
@@ -10,11 +11,8 @@ public class TimeFormatter {
 	}
 	
 	public String format(){
-		int hour =  time.getHour();
-		int minute = time.getMinute();
-		int second = time.getSecond();
+		return time.format(DateTimeFormatter.ISO_LOCAL_TIME);
 		
-		return hour + ":" + minute + ":" + second;
 	}
 	
 	

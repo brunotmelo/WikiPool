@@ -2,7 +2,6 @@ package dataTypes;
 
 
 import java.time.LocalDate;
-import java.time.Month;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,14 +22,6 @@ public class TestDate {
 		Assert.assertEquals(EXPECTED_YEAR, date.getYear());
 		Assert.assertEquals(EXPECTED_MONTH,date.getMonthValue());
 		Assert.assertEquals(EXPECTED_DAY, date.getDayOfMonth());
-	}
-	
-
-	@Test
-	public void testMonthObject(){
-		LocalDate date = LocalDate.of(2015, 8, 31);
-		Month awnser = date.getMonth();
-		System.out.println(awnser.name());
 	}
 	
 }

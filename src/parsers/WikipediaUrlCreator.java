@@ -8,7 +8,7 @@ import exceptions.WikipediaConnectionException;
 public class WikipediaUrlCreator {
 
 	private String url;
-
+	
 	public String createUrlFrom(String searchTerm){
 		url = "https://en.wikipedia.org/w/api.php?action=query";
 		addProprieties();
@@ -30,7 +30,7 @@ public class WikipediaUrlCreator {
 	}
 	
 	private void addRevisionProprieties(){
-		url += "&rvprop=timestamp%7Cuser";
+		url += "&rvprop=timestamp%7Ccomment%7Cuser";
 	}
 	
 	private void addRevisionLimit(){
