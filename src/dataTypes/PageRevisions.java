@@ -13,11 +13,9 @@ public class PageRevisions {
 	private boolean isRedirect;
 	private String redirectedFrom;
 	
-	
-	//normally the pagerevisions will receive an xml
-	//there will be a class that will create revisions
 	public PageRevisions(Document page){
 		PageParser reader = new PageParser(page);
+		//authors will have revisions
 		revisionAuthors = reader.parseRevisionsIntoAuthorsAndOrder();
 		pageTitle = reader.parseTitle();
 		isRedirect = reader.parseIsRedirected();
@@ -34,8 +32,6 @@ public class PageRevisions {
 		return revisionAuthors;
 	}
 	
-	//send authors to the graph
-
 	public String getPageTitle() {
 		return pageTitle;
 	}
@@ -49,7 +45,4 @@ public class PageRevisions {
 		
 		return revisions;
 	}
-	
-	
-	
 }

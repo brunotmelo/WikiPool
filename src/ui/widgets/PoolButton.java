@@ -19,13 +19,14 @@ public class PoolButton extends Button {
     		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {	
+				disableButton();
 				PageRevisions page = getPageRevisions(inputField.getText());
 				openPageRevisionsWindow(page);
 				//hideCurrentWindow(event);				
 			}
 		});
 	}
-   	
+	
 	private PageRevisions getPageRevisions(String searchTerm){
 		WikipediaPooler control = new WikipediaPooler();
 		try{
@@ -34,6 +35,8 @@ public class PoolButton extends Button {
 			new ConnectionErrorDialog();
 		}catch(Exception e){
 			new ParseErrorDialog();
+		}finally{
+			enableButton();
 		}
 		//code to make the compiler happy.
 		//this is unreachable code
@@ -49,4 +52,11 @@ public class PoolButton extends Button {
 		((Node)(clickEvent.getSource())).getScene().getWindow().hide();;
 	}
 	
+	private void disableButton(){
+		this.setDisable(true);
+	}
+	
+	private void enableButton(){
+		this.setDisable(false);
+	}
 }

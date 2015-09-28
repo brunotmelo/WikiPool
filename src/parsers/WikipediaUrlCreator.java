@@ -52,5 +52,4 @@ public class WikipediaUrlCreator {
 	private void addShowRedirects(){
 		url += "&redirects=";
 	}
-	
 }

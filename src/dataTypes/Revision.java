@@ -24,8 +24,6 @@ public class Revision {
 		this.comment = parser.parseComment();
 	}
 	
-	//constructor that gets needed xml automatically from document
-	
 	public String getFormattedDate(){
 		DateFormatter df = new DateFormatter(changeDate);
 		return df.format();		
@@ -43,5 +41,4 @@ public class Revision {
 	public String getComment(){
 		return comment;
 	}
-	
 }

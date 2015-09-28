@@ -11,5 +11,4 @@ public class XmlParsingException extends RuntimeException {
 	public XmlParsingException(String cause){
 		super(cause);
 	}
-
 }

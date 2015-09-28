@@ -17,6 +17,4 @@ public class DateFormatter {
 		
 		return month + " " + day + " " + year;
 	}
-	
-	
 }

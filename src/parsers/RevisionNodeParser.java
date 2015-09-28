@@ -41,8 +41,4 @@ public class RevisionNodeParser {
 		String timestamp = revision.getAttributes().getNamedItem("timestamp").getNodeValue();
 		return Instant.parse(timestamp);
 	}
-	
-
-	
-	
 }

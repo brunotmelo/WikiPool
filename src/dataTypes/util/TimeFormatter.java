@@ -14,6 +14,4 @@ public class TimeFormatter {
 		return time.format(DateTimeFormatter.ISO_LOCAL_TIME);
 		
 	}
-	
-	
 }

@@ -3,7 +3,6 @@ package network;
 import org.w3c.dom.Document;
 
 import dataTypes.PageRevisions;
-import exceptions.WikipediaConnectionException;
 import exceptions.XmlParsingException;
 
 public class WikipediaPooler {

@@ -73,5 +73,4 @@ public class XmlParser {
 		XPath xpath = XPathFactory.newInstance().newXPath();
 		return (Node) xpath.evaluate(expression, xmlDocument, XPathConstants.NODE);
 	}
-	
 }

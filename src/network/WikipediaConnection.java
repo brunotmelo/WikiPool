@@ -63,7 +63,4 @@ public class WikipediaConnection {
 		return creator.createUrlFrom(term);
 		
 	}
-	
-	
-	
 }

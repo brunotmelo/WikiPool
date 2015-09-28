@@ -11,5 +11,4 @@ public class WikipediaConnectionException extends RuntimeException{
 	public WikipediaConnectionException(String cause){
 		super(cause);
 	}
-	
 }

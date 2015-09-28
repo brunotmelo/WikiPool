@@ -28,8 +28,8 @@ public class PageParser {
 		authorsHash = new HashMap<>();
 		for(int i=0; i< parseRevisionsLength(); i++){
 			Node revisionNode = revisions.getChildNodes().item(i);
-			Revision revision = new Revision(revisionNode);
-			insertIntoAuthor(revision);
+			Revision currentRevision = new Revision(revisionNode);
+			insertIntoAuthor(currentRevision);
 		}
 		sortAuthorsByMostChanges();
 		return authorsOrderedList;
@@ -68,15 +68,11 @@ public class PageParser {
 		return xmlParser.getPageTitle();
 	}
 
-
 	public boolean parseIsRedirected() {
 		return xmlParser.isRedirect();
 	}
 
-
 	public String parseRedirectedFrom() {
 		return xmlParser.getRedirectedFrom();
 	}
-	
-	
 }
