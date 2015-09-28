@@ -33,9 +33,9 @@ public class SearchWindow extends Application {
         verticalLayout.setMinSize(320, 240);
         button = new PoolButton(inputField);    
         verticalLayout.getChildren().add(button);
-	    addEnterClickListener();
 	    searchScene = new Scene(verticalLayout, 200, 100);
 	    searchScene.getStylesheets().add("ui/SearchWindowStyle.css");
+	    addEnterClickListener();
 	}
 	
 	private void addEnterClickListener(){
