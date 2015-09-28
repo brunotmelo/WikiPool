@@ -20,7 +20,7 @@
 .list-cell{
 	-fx-background-color: transparent, #F4F4F4;
     -fx-background-insets: 0px, 5px ;
-
+	-fx-font-size: 12pt;
 	-fx-padding: 10pt;
 }
  

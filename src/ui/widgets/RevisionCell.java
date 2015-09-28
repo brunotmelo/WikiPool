@@ -37,7 +37,7 @@ public class RevisionCell extends ListCell<Revision> {
     
     private void initCell(){
         setIds();
-        comment.setWrappingWidth(530);
+        comment.setWrappingWidth(550);
         comment.setTextAlignment(TextAlignment.JUSTIFY);
         revisionBox.getChildren().add(comment);
         revisionBox.getChildren().add(tagsBox);
@@ -77,6 +77,7 @@ public class RevisionCell extends ListCell<Revision> {
     	date.setId("dateText");
     	time.setId("timeText");
     	tagsBox.setId("downBar");
+    	comment.setId("comment");
     }
     
 }

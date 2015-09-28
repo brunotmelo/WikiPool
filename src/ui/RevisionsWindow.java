@@ -23,13 +23,7 @@ import javafx.util.Callback;
 import ui.widgets.BarChartBuilder;
 import ui.widgets.RevisionCell;
 
-
-
 public class RevisionsWindow {
-	
-	
-	//i will need title, if was redirected
-	//revisions
 	
 	//vars required to run the window
 	private Scene revisionsScene;
@@ -37,8 +31,6 @@ public class RevisionsWindow {
 	private Separator separator = new Separator();
 	private HBox content;
 
-	//private Text 
-	
 	private String redirectedFrom;
 	private String titleText;
 	private PageRevisions revisions;
@@ -127,7 +119,7 @@ public class RevisionsWindow {
 		whitespace = new Pane();
 		chartBox.getChildren().add(bc);
 		chartBox.getChildren().add(whitespace);
-		//VBox.setVgrow(whitespace, Priority.ALWAYS);
+		VBox.setVgrow(bc, Priority.ALWAYS);
 	}
 	
 	private void setContentProprieties(){
@@ -144,7 +136,6 @@ public class RevisionsWindow {
 		if(redirectedFrom!=null){
 			mainStage.setTitle("WikiPool - Redirected from " +redirectedFrom );
 		}else{
-			System.out.println(redirectedFrom);
 			mainStage.setTitle("WikiPool - "+ titleText);
 		}
 		
