@@ -1,4 +1,4 @@
-package ui.widgets;
+package ui.util;
 
 import java.util.ArrayList;
 

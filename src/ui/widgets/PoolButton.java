@@ -3,7 +3,6 @@ package ui.widgets;
 
 import dataTypes.PageRevisions;
 import exceptions.WikipediaConnectionException;
-import exceptions.XmlParsingException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -20,32 +19,34 @@ public class PoolButton extends Button {
     		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {	
-				WikipediaPooler control = new WikipediaPooler();
-				try{
-					PageRevisions page = control.getPageRevisions(inputField.getText());
-					openPageRevisionsWindow(page);
-				}catch(WikipediaConnectionException e){
-					new ConnectionErrorDialog();
-				}catch(XmlParsingException e){
-					new ParseErrorDialog();
-				}
-				
-				
-				
-				//openWindow();
-
+				PageRevisions page = getPageRevisions(inputField.getText());
+				openPageRevisionsWindow(page);
 				//hideCurrentWindow(event);				
 			}
 		});
 	}
    	
-	private void hideCurrentWindow(ActionEvent clickEvent){
-		((Node)(clickEvent.getSource())).getScene().getWindow().hide();;
+	private PageRevisions getPageRevisions(String searchTerm){
+		WikipediaPooler control = new WikipediaPooler();
+		try{
+			return control.getPageRevisions(searchTerm);
+		}catch(WikipediaConnectionException e){
+			new ConnectionErrorDialog();
+		}catch(Exception e){
+			new ParseErrorDialog();
+		}
+		//code to make the compiler happy.
+		//this is unreachable code
+		return null;
 	}
-	
+		
 	private void openPageRevisionsWindow(PageRevisions page){
 		RevisionsWindow searchScreen1 = new RevisionsWindow(page);
 		searchScreen1.show();
+	}
+	
+	private void hideCurrentWindow(ActionEvent clickEvent){
+		((Node)(clickEvent.getSource())).getScene().getWindow().hide();;
 	}
 	
 }

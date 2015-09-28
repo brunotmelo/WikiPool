@@ -13,23 +13,20 @@ import dataTypes.Revision;
 
 public class PageParser {
 	
-	//will receive a node and do all the work
 	private Node revisions;
 	private XmlParser xmlParser;
 	
 	private HashMap<String,Author> authorsHash;
-	
 	private ArrayList<Author> authorsOrderedList;
 	
 	public PageParser(Document pageDocument){
 		xmlParser = new XmlParser(pageDocument);
 		revisions = xmlParser.getRevisions();
-		
-		authorsHash = new HashMap<>();
 	}
 	
 	public ArrayList<Author> parseRevisionsIntoAuthorsAndOrder(){
-		for(int i=0; i< revisionsLength(); i++){
+		authorsHash = new HashMap<>();
+		for(int i=0; i< parseRevisionsLength(); i++){
 			Node revisionNode = revisions.getChildNodes().item(i);
 			Revision revision = new Revision(revisionNode);
 			insertIntoAuthor(revision);
@@ -38,7 +35,7 @@ public class PageParser {
 		return authorsOrderedList;
 	}
 	
-	private int revisionsLength(){
+	private int parseRevisionsLength(){
 		return revisions.getChildNodes().getLength();
 	}
 	
@@ -61,7 +58,7 @@ public class PageParser {
 	            return a2.getNoOfRevisions() - a1.getNoOfRevisions();
 	        }
 	    });
-	    /* prints authors. Used to debug order
+	    /* prints authors. Used to debug ordering
 	     * for (Author a : authorsOrderedList) {
 	        System.out.println(a.getName() + "\t" + a.getNoOfRevisions());
 	    }*/
