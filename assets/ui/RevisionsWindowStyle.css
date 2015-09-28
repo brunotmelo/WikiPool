@@ -1,0 +1,48 @@
+/*controlStyle.css */
+ 
+#vboxe{
+	-fx-padding: 15;
+	-fx-font: 14pt "calibri";
+    -fx-background: #ffffff;
+    -fx-vgap:10pt;
+}
+
+.list-view {
+    /*-fx-padding: 5pt;*/
+    -fx-background-color: white;
+   
+}
+
+#bottomOfCell {
+	-fx-text-fill: red;
+}
+
+.list-cell{
+	-fx-background-color: transparent, #F4F4F4;
+    -fx-background-insets: 0px, 5px ;
+	-fx-font-size: 12pt;
+	-fx-padding: 10pt;
+}
+ 
+#title{
+	-fx-font: 28pt "Georgia";
+    /*-fx-background: #67644e;*/
+}
+
+#redirectedText{
+	-fx-font: 12pt "Georgia";
+    -fx-fill: black;
+    -fx-text-alignment:right;
+}
+
+.chart-content {
+    -fx-background-color: white;
+}
+
+.chart-bar {
+    -fx-bar-fill: #0645ad;
+}
+
+/*.data0.chart-bar {
+	-fx-background-color:azure;
+}*/
