@@ -17,10 +17,7 @@ public class BarChartBuilder{
 	private ArrayList<Author> authors;
 	
 	private XYChart.Series<String,Number> series1;
-	
-	final static String top1 = "GHcool";
-    final static String top2 = "HughD";
-		
+
 	public BarChartBuilder(ArrayList<Author> authors){
 		this.authors = authors;
 		initVariables();
@@ -42,9 +39,7 @@ public class BarChartBuilder{
 	public BarChart<String,Number> getChart(){
 		return bc;	
 	}
-    
-    
-    
+	
 	private void buildGraph(){
 		series1 = new XYChart.Series();
 		Author aux;

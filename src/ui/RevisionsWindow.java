@@ -1,8 +1,6 @@
 
 package ui;
 
-import ui.widgets.BarChartBuilder;
-import ui.widgets.RevisionCell;
 import dataTypes.PageRevisions;
 import dataTypes.Revision;
 import javafx.application.Platform;
@@ -12,21 +10,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import ui.widgets.BarChartBuilder;
+import ui.widgets.RevisionCell;
 
 
 

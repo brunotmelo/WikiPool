@@ -1,20 +1,16 @@
 package ui.widgets;
 
 
-import ui.RevisionsWindow;
 import dataTypes.PageRevisions;
 import exceptions.WikipediaConnectionException;
 import exceptions.XmlParsingException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import network.WikipediaPooler;
+import ui.RevisionsWindow;
 
 public class PoolButton extends Button {  	
 	

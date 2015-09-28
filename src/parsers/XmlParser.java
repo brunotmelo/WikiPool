@@ -1,6 +1,4 @@
-package util;
-
-import static org.junit.Assert.assertTrue;
+package parsers;
 
 import java.io.IOException;
 
@@ -17,7 +15,7 @@ import org.xml.sax.SAXException;
 import exceptions.XmlParsingException;
 
 public class XmlParser {
-
+	
 	private Document xmlDocument;
 	
 	public XmlParser(Document xmlDocument){
@@ -25,9 +23,9 @@ public class XmlParser {
 	}
 	
 	public String getPageTitle(){
-		String expression = "/api/query/pages/page/@title";
+		String titleExpression = "/api/query/pages/page/@title";
 		try{
-			return getXmlStringFromExpression(expression);
+			return getXmlStringFromExpression(titleExpression);
 		}catch(Exception e){
 			throw new XmlParsingException();
 		}
@@ -42,25 +40,24 @@ public class XmlParser {
 	}
 	
 	private boolean existsRedirectedNode() throws XPathExpressionException, SAXException, IOException, ParserConfigurationException{
-		String expression = "/api/query/redirects/r/@from";
-		boolean existsRedirectedNode = getXmlNodeFromExpression(expression) != null;
+		String redirectedFromExpression = "/api/query/redirects/r/@from";
+		boolean existsRedirectedNode = getXmlNodeFromExpression(redirectedFromExpression) != null;
 		return existsRedirectedNode;
 	}
 	
 	public String getRedirectedFrom(){
-		String expression = "/api/query/redirects/r/@from";
+		String redirectedFromExpression = "/api/query/redirects/r/@from";
 		try{
-			return getXmlStringFromExpression(expression);
+			return getXmlStringFromExpression(redirectedFromExpression);
 		}catch(Exception e){
 			throw new XmlParsingException();
 		}
-		
 	}
 	
 	public Node getRevisions(){
-		String expression = "/api/query/pages/page/revisions";
+		String revisionsExpression = "/api/query/pages/page/revisions";
 		try{
-			return getXmlNodeFromExpression(expression);
+			return getXmlNodeFromExpression(revisionsExpression);
 		}catch(Exception e){
 			throw new XmlParsingException();
 		}

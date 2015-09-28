@@ -25,12 +25,10 @@ public class RevisionNodeParser {
 		}catch(NullPointerException e){
 			return null;
 		}
-
 	}
 	
 	public LocalDate parseDate(){
 		Instant dateInstant = getTimeStampInstant();
-		// use ZoneId.systemDefault(); for system localization
 		return dateInstant.atZone(ZoneId.of("UTC")).toLocalDate();
 	}
 	

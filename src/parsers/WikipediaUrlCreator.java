@@ -10,15 +10,19 @@ public class WikipediaUrlCreator {
 	private String url;
 	
 	public String createUrlFrom(String searchTerm){
-		url = "https://en.wikipedia.org/w/api.php?action=query";
+		url = new String();
+		addQueryAction();
 		addProprieties();
 		addFormat();
 		addRevisionProprieties();
 		addRevisionLimit();
 		addPageTitle(searchTerm);
 		addShowRedirects();		
-				
 		return url;			
+	}
+	
+	private void addQueryAction(){
+		url += "https://en.wikipedia.org/w/api.php?action=query";
 	}
 	
 	private void addProprieties(){

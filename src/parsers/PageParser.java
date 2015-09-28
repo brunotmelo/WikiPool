@@ -1,7 +1,5 @@
 package parsers;
 
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,18 +9,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import dataTypes.Author;
-import dataTypes.PageRevisions;
 import dataTypes.Revision;
-import util.XmlParser;
 
 public class PageParser {
 	
 	//will receive a node and do all the work
 	private Node revisions;
 	private XmlParser xmlParser;
-	
-	//private Authors revisionsAuthors;
-	private PageRevisions revisionsParsed;
 	
 	private HashMap<String,Author> authorsHash;
 	

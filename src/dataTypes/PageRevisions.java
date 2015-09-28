@@ -9,7 +9,6 @@ import parsers.PageParser;
 public class PageRevisions {
 
 	private ArrayList<Author> revisionAuthors;
-	private ArrayList<Revision> allRevisions;
 	private String pageTitle;
 	private boolean isRedirect;
 	private String redirectedFrom;

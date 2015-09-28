@@ -1,16 +1,12 @@
 package parsers;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.xml.sax.SAXException;
-
-import network.WikipediaConnection;
 
 public class TestUrlCreator {
 

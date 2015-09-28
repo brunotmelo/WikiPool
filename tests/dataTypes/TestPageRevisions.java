@@ -8,12 +8,10 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import dataTypes.PageRevisions;
 import util.XmlFileOpener;
 
 public class TestPageRevisions {
