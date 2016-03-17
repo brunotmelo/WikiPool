@@ -7,6 +7,5 @@ Authors:
   Tianshu Chu
 
 
-Prerequisite. 
-
+Prerequisites:
 In eclipse. You will need the e(fx)clipse extension.
