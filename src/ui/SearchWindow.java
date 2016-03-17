@@ -33,7 +33,7 @@ public class SearchWindow extends Application {
         verticalLayout.setMinSize(320, 240);
         button = new PoolButton(inputField);    
         verticalLayout.getChildren().add(button);
-	    searchScene = new Scene(verticalLayout, 200, 100);
+	    searchScene = new Scene(verticalLayout, 350, 100);
 	    searchScene.getStylesheets().add("ui/SearchWindowStyle.css");
 	    addEnterClickListener();
 	}
@@ -52,7 +52,5 @@ public class SearchWindow extends Application {
 	    mainStage.setTitle("WikiPool");
 	    mainStage.setScene(searchScene);	
 	    mainStage.show();
-	}
-	
-	
+	}	
 }
